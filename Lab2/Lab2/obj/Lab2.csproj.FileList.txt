@@ -1,0 +1,12 @@
+bin\Debug\Lab2.exe
+bin\Debug\Lab2.pdb
+bin\Debug\GAVLabFramework.dll
+bin\Debug\LabExcelReader.dll
+bin\Debug\GAVLabFramework.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Lab2.Form1.resources
+obj\Debug\Lab2.Properties.Resources.resources
+obj\Debug\Lab2.csproj.GenerateResource.Cache
+obj\Debug\Lab2.exe
+obj\Debug\Lab2.pdb
+bin\Debug\GAVLabFramework.pdb
