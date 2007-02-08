@@ -16,6 +16,7 @@ namespace Lab2 {
         // private attributes
         private string[] titles;
         private object[,] data;
+        List<string> stringList;
 
         private DataCube dataCube;
         private Renderer renderer;
@@ -32,18 +33,14 @@ namespace Lab2 {
 
             dataCube = new DataCube();
             renderer = new Renderer(this);
-            //colorMap = new ColorMap();
-            //InitializeColorMap();
+            stringList = new List<string>();
 
             LoadData();
             
-            /************************************************************************/
-            /* PASS TO A FUNCTION                                                  */
-            /************************************************************************/
             downSamplingFilter = new DownsamplingFilter( 50 );
             downSamplingFilter.Input = dataCube;
 
-            kMeansFilter = new KMeansFilter(2);
+            kMeansFilter = new KMeansFilter(4);
             kMeansFilter.Input = dataCube;
         }
 
@@ -56,15 +53,31 @@ namespace Lab2 {
         private ColorMap CreateColorMap()
         {
             ColorMap map = new ColorMap();
-            //LinearHSVColorMapPart hsvMap = new LinearHSVColorMapPart(0.0f, 500.0f);
-            LinearColorMapPart linearMap = new LinearColorMapPart(Color.Aquamarine, Color.DarkKhaki);
-            map.AddColorMapPart(linearMap);
-            linearMap.Invalidate();
+            LinearHSVColorMapPart hsvMap = new LinearHSVColorMapPart(0.0f, 180.0f);
+            //LinearColorMapPart linearMap = new LinearColorMapPart(Color, Color.DarkKhaki);
+            map.AddColorMapPart(hsvMap);
+            hsvMap.Invalidate();
             map.Invalidate();
 
             return map;
             //colorMap.Input = dataCube;
         }
+
+        //private ColorMap CreateSimpleColorMap()
+        //{
+        //    ColorMap map = new ColorMap();
+        //    SimpleColorMapPart simpleMap1 = new SimpleColorMapPart(Color.PowderBlue);
+        //    SimpleColorMapPart simpleMap2 = new SimpleColorMapPart(Color.OrangeRed);
+
+        //    map.AddColorMapPart(simpleMap1);
+        //    map.AddColorMapPart(simpleMap2);
+        //    simpleMap1.Invalidate();
+        //    simpleMap2.Invalidate();
+        //    map.Invalidate();
+
+        //    return map;
+        //    //colorMap.Input = dataCube;
+        //}
 
         //////////////////////////////////////////////////////////////////////////
         // Method:    InitializeParallelCoordinatesPlot
@@ -74,20 +87,22 @@ namespace Lab2 {
         // Parameter: Panel panel
         // Parameter: IDataCubeProvider<float> filter
         //////////////////////////////////////////////////////////////////////////
-        private ParallelCoordinatesPlot InitializeParallelCoordinatesPlot(Panel panel, IDataCubeProvider<float> filter)
+        private ParallelCoordinatesPlot InitializeParallelCoordinatesPlot(Panel panel, 
+            IDataCubeProvider<float> filter, int columnIndex)
         {
             ParallelCoordinatesPlot filterPlot = new ParallelCoordinatesPlot();
 
-            List<string> stringList = new List<string>();
-            for (int i = 0; i < titles.GetLength(0); i++)
-            {
-                stringList.Add(titles[i]);
-            }
             filterPlot.Input = filter;
             filterPlot.Headers = stringList;
             
             ColorMap colorMap = CreateColorMap();
             colorMap.Input = filter;
+            
+            if (columnIndex != -1)
+            {
+                colorMap.Index = columnIndex;
+            }
+            
             filterPlot.ColorMap = colorMap;
             
             filterPlot.Enabled = true;
@@ -101,9 +116,14 @@ namespace Lab2 {
         private void LoadData()
         {
             ExcelReader reader = new ExcelReader();
-            reader.GetArrayFromExcel("../../../cars.xls", "Sheet1", out titles, out data);
+            reader.GetArrayFromExcel("../../../iris.xls", "Blad1", out titles, out data);
 
             dataCube.SetData(data);
+
+            for (int i = 0; i < titles.GetLength(0); i++)
+            {
+                stringList.Add(titles[i]);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -114,11 +134,12 @@ namespace Lab2 {
             kMeansPanel = splitContainer2.Panel2;
             
             // Write your code here.
-            InitializeParallelCoordinatesPlot(originalDataPanel, dataCube);
+            InitializeParallelCoordinatesPlot(originalDataPanel, dataCube, -1);
             ParallelCoordinatesPlot plot = InitializeParallelCoordinatesPlot(downSamplingPanel, 
-                downSamplingFilter);
+                downSamplingFilter, -1);
 
-            InitializeParallelCoordinatesPlot(kMeansPanel, kMeansFilter);
+            stringList.Add("Clusters");
+            InitializeParallelCoordinatesPlot(kMeansPanel, kMeansFilter, dataCube.GetData().Data.GetLength(0));
 
             List<float> max, min;
             dataCube.GetData().GetAllColumnMaxMin(out max, out min);
