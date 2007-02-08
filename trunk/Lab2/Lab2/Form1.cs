@@ -40,7 +40,7 @@ namespace Lab2 {
             downSamplingFilter = new DownsamplingFilter( 50 );
             downSamplingFilter.Input = dataCube;
 
-            kMeansFilter = new KMeansFilter(4);
+            kMeansFilter = new KMeansFilter(3);
             kMeansFilter.Input = dataCube;
         }
 

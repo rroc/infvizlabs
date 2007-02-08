@@ -167,7 +167,7 @@ namespace Lab2 {
             int rowCount = _input.GetData().Data.GetLength(1);
 
             // Implement the KMeans clustering algorithm here. You can of course split up your code into several methods.
-            if( ! randomClustersReady )
+            //if( ! randomClustersReady )
             {
                 float[, ,] normalizedData = new float[columnCount, rowCount, 1];
                 NormalizeData(normalizedData);
