@@ -7,9 +7,10 @@ print("Files in the Directory: \n");
 $datafile="excel.txt";
 open(DAT,">$datafile") || die("Cannot Open File");
 
-
+$idx = 1;
 while ( $filename = readdir(DIR) ) 
 	{
+	print($idx++ ."\n" );
 	$linedata = parseFile( $filename );	
 	print DAT "$linedata";
 	}
@@ -17,6 +18,7 @@ close(DAT);
 closedir DIR;
 
 #Find the info for FreeDB text files
+#ex.
 # DTITLE=Charles Mingus / Town Hall Concert
 # DYEAR=1964
 # DGENRE=Jazz
@@ -45,6 +47,9 @@ sub parseFile
 #				$result .= "\t$1";
 #				}				
 			}
-	return $result."\r\n";
+	if( length($result)>0 )
+		return $result."\r\n";
+	else
+		return $result;
 }
 
