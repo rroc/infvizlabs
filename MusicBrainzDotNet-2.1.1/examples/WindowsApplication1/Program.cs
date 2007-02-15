@@ -21,112 +21,218 @@
 using System;
 using musicbrainz;
 using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 using CarlosAg.ExcelXmlWriter;
 
 public class GetAlbum
 {
+    //struct Country
+    //{
+    //    public string acronym;
+    //    public string name;
+    //    public int gdpPerCapita;
+    //};
 
-    private static void ComputeSomething(string artist, string albumName, MusicBrainz o)
-    {
-        Console.WriteLine("Searching for occurrences for: " + artist + " / " + albumName);
-        bool ret = o.Query(MusicBrainz.MBQ_FileInfoLookup, new String[] { "", artist, albumName, "" });
+    //struct MusicBrainzAlbum
+    //{
+    //    public Country country;
+    //    public string date;
+    //};
 
-        // Select the first album
-        o.Select(MusicBrainz.MBS_SelectLookupResult, 1);
+    //struct Album
+    //{
+    //    public string title;
 
-        string type;
-        o.GetResultData(MusicBrainz.MBE_LookupGetType, out type);
-        string fragment;
-        o.GetFragmentFromURL(type, out fragment);
+    //    // probably store it as pointer :) ??
+    //    public string artist;
+    //    public string style;
 
-        // iterate through all albums
-        for (int j = 1; ; j++)
-        {
-            o.Select(MusicBrainz.MBS_Rewind);
+    //    public List<MusicBrainzAlbum> releases;
+    //};
 
-            if (!o.Select(MusicBrainz.MBS_SelectLookupResult, j))
-            {
-                break;
-            }
+    //private static bool GetMusicBrainzReleases(string artist, string albumName, MusicBrainz o, 
+    //    List<MusicBrainzAlbum> releasesList)
+    //{
+    //    bool foundRelevantRelease = false;
 
-            // NOTE: must be done before the next Select
-            int relevance = o.GetResultInt(MusicBrainz.MBE_LookupGetRelevance);
+    //    Console.WriteLine("Searching for occurrences for: " + artist + " / " + albumName);
+    //    bool ret = o.Query(MusicBrainz.MBQ_FileInfoLookup, new String[] { "", artist, albumName, "", "", "" });
 
-            // select the album
-            o.Select(MusicBrainz.MBS_SelectLookupResultAlbum);
+    //    // Select the first album
+    //    o.Select(MusicBrainz.MBS_SelectLookupResult, 1);
 
-            string name;
-            o.GetResultData(MusicBrainz.MBE_AlbumGetAlbumName, out name);
+    //    string type;
+    //    o.GetResultData(MusicBrainz.MBE_LookupGetType, out type);
+    //    string fragment;
+    //    o.GetFragmentFromURL(type, out fragment);
 
-            int nReleases = o.GetResultInt(MusicBrainz.MBE_AlbumGetNumReleaseDates);
+    //    // iterate through all the results
+    //    o.Select(MusicBrainz.MBS_Rewind);
 
-            if (nReleases != 0 && (relevance == 100))
-            {
-                for (int i = 0; i < nReleases; i++)
-                {
-                    if ( o.Select(MusicBrainz.MBS_SelectReleaseDate, 1) )
-                    {
-                        Console.WriteLine("Release N. " + (i + 1));
+    //    if (!o.Select(MusicBrainz.MBS_SelectLookupResult, 1))
+    //    {
+    //        break;
+    //    }
 
-                        String c;
-                        o.GetResultData(MusicBrainz.MBE_ReleaseGetCountry, out c);
+    //    // NOTE: must be done before the next Select
+    //    int relevance = o.GetResultInt(MusicBrainz.MBE_LookupGetRelevance);
 
-                        String date;
-                        o.GetResultData(MusicBrainz.MBE_ReleaseGetDate, out date);
+    //    // if not sure about it, quit
+    //    if (relevance < 80)
+    //    {
+    //        break;
+    //    }
 
-                        Console.WriteLine("Country: " + c + "   Date: " + date);
-                    }
-                }
-            }
-        }
-    }
+    //    // select the album
+    //    o.Select(MusicBrainz.MBS_SelectLookupResultAlbum);
 
-    private static void WriteSomeStuff()
-    {
-        Workbook book = new Workbook();
-        Worksheet sheet = book.Worksheets.Add("Sample");
-        WorksheetRow row = sheet.Table.Rows.Add();
+    //    string name;
+    //    o.GetResultData(MusicBrainz.MBE_AlbumGetAlbumName, out name);
 
-        // Header
-        row.Cells.Add("Artist");
-        row.Cells.Add("Album/Release");
-        row.Cells.Add("Similar Artist");
-        row.Cells.Add("Date");
-        row.Cells.Add("Country");
+    //    int nReleases = o.GetResultInt(MusicBrainz.MBE_AlbumGetNumReleaseDates);
 
-        // Rows
-        row = sheet.Table.Rows.Add();
-        row.Cells.Add("Pink Floyd");
-        row.Cells.Add("The Division Bell");
-        row.Cells.Add("Someone :)");
-        row.Cells.Add("2000-10-05");
-        row.Cells.Add("SE");
+    //    if (nReleases != 0)
+    //    {
 
-        book.Save(@"../../../test.xls");
+    //        Console.WriteLine("*** Requested Album: " + albumName + 
+    //            "   Retrieved Album: " + name + " *** RELEVANCE: " + relevance);
 
-        //string fileName = "test.txt";  // a sample file name
+    //        foundRelevantRelease = true;
 
-        //// Delete the file if it exists.
-        //if (File.Exists(fileName))
-        //{
-        //    File.Delete(fileName);
-        //}
+    //        for (int i = 1; i <= nReleases; i++)
+    //        {
+    //            if (o.Select(MusicBrainz.MBS_SelectReleaseDate, i))
+    //            {
+    //                Console.WriteLine("Release N. " + i);
 
-        //// Create the file.
-        //FileStream fs = File.Create(fileName, 1024);
+    //                String country;
+    //                o.GetResultData(MusicBrainz.MBE_ReleaseGetCountry, out country);
+
+    //                String date;
+    //                o.GetResultData(MusicBrainz.MBE_ReleaseGetDate, out date);
+
+    //                Console.WriteLine("Country: " + country + "   Date: " + date);
+
+    //                // add it to the list
+    //                MusicBrainzAlbum release = new MusicBrainzAlbum();
+    //                release.country = coun;
+
+    //            }
+
+    //            o.Select(MusicBrainz.MBS_Back);
+    //        }
+    //    }
+
+    //    return foundRelevantRelease;
+    //}
+
+    //private static void WriteSomeStuff()
+    //{
+    //    Workbook book = new Workbook();
+    //    Worksheet sheet = book.Worksheets.Add("Sample");
+    //    WorksheetRow row = sheet.Table.Rows.Add();
+
+    //    // Header
+    //    row.Cells.Add("Artist");
+    //    row.Cells.Add("Album/Release");
+    //    row.Cells.Add("Similar Artist");
+    //    row.Cells.Add("Date");
+    //    row.Cells.Add("Country");
+
+    //    // Rows
+    //    row = sheet.Table.Rows.Add();
+    //    row.Cells.Add("Pink Floyd");
+    //    row.Cells.Add("The Division Bell");
+    //    row.Cells.Add("Someone :)");
+    //    row.Cells.Add("2000-10-05");
+    //    row.Cells.Add("SE");
+
+    //    book.Save(@"../../../test.xls");
+
+    //    //string fileName = "test.txt";  // a sample file name
+
+    //    //// Delete the file if it exists.
+    //    //if (File.Exists(fileName))
+    //    //{
+    //    //    File.Delete(fileName);
+    //    //}
+
+    //    //// Create the file.
+    //    //FileStream fs = File.Create(fileName, 1024);
         
-        //// Add some information to the file.
-        //byte[] info = new System.Text.UTF8Encoding(true).GetBytes("This is some text in the file.");
-        //fs.Write(info, 0, info.Length);
+    //    //// Add some information to the file.
+    //    //byte[] info = new System.Text.UTF8Encoding(true).GetBytes("This is some text in the file.");
+    //    //fs.Write(info, 0, info.Length);
 
-        //// Open the file and read it back.
-        //StreamReader sr = File.OpenText(fileName);
-        //string s = "";
-        //while ((s = sr.ReadLine()) != null) 
-        //{
-        //    System.Console.WriteLine(s);
-        //}
-    }
+    //    //// Open the file and read it back.
+    //    //StreamReader sr = File.OpenText(fileName);
+    //    //string s = "";
+    //    //while ((s = sr.ReadLine()) != null) 
+    //    //{
+    //    //    System.Console.WriteLine(s);
+    //    //}
+    //}
+
+    //private static void ParseCountries(Hashtable countries)
+    //{
+    //    // Open the file and read it back.
+    //    StreamReader sr = File.OpenText("../../../countries.txt");
+    //    string text = "";
+    //    while ((text = sr.ReadLine()) != null)
+    //    {
+    //        char[] delimiterChars = { '\t' };
+
+    //        string[] words = text.Split(delimiterChars);
+            
+    //        if ( words.Length > 2)
+    //        {
+    //            Country country;
+    //            country.acronym         = words[0];
+    //            country.name            = words[1];
+    //            country.gdpPerCapita    = int.Parse(words[2]);
+
+    //            countries.Add(country.name, country);
+    //        }
+    //    }
+    //}
+
+    //private static void ParseMusicStyle(List<Album> albums, string style, MusicBrainz queryObject)
+    //{
+    //    // Open the file and read it back.
+    //    StreamReader sr = File.OpenText("../../../" + style + ".txt");
+    //    string text = "";
+    //    while ((text = sr.ReadLine()) != null)
+    //    {
+    //        char[] delimiterChars = {'\t'};
+
+    //        string[] tokens = text.Split(delimiterChars);
+
+    //        Album album = new Album();
+
+    //        // Lowercase all the tokens
+    //        album.artist = tokens[0].ToLower();
+    //        album.title = tokens[1].ToLower();
+            
+    //        if( tokens.Length < 3 )
+    //        {
+    //            album.style = style;
+    //        }
+    //        else
+    //        {
+    //            album.style = tokens[2].ToLower();
+    //        }
+
+    //        // search for info in the MusicBrainz DB
+    //        List<MusicBrainzAlbum> releases = new List<MusicBrainzAlbum>();
+    //        bool foundSomething = GetMusicBrainzReleases(album.artist, album.title, queryObject, releases);
+    //        if( foundSomething )
+    //        {
+    //            album.releases = releases;
+    //            albums.Add(album);
+    //        }
+    //    }
+    //}
 
     public static int Main(String[] argv)
     {
@@ -134,12 +240,6 @@ public class GetAlbum
         String error, data, temp;
         bool ret, isMultipleArtist = false;
         int numTracks, trackNum, i;
-
-        //if (argv.Length != 1)
-        //{
-        //    Console.WriteLine("Usage: GetAlbum <albumid|cdindexid>");
-        //    return 0;
-        //}
 
         // Create the musicbrainz object, which will be needed for subsequent calls
         o = new MusicBrainz();
@@ -158,18 +258,25 @@ public class GetAlbum
         else
             o.SetDepth(4);
 
+
+        MusicDBParser parser = new MusicDBParser();
+        parser.ParseCountries("../../../countries_acronyms.txt");
+        parser.ParseMusicStyle("reggae", o);
+
+
+
         // Set up the args for the find album query
         String[] args = new String[] { argv[0] };
 
         //Console.Clear();
 
-        WriteSomeStuff();
+        //WriteSomeStuff();
 
-        ComputeSomething("Pink Floyd", "The Wall", o);
-        ComputeSomething("Pink Floyd", "Division Bell", o);
-        ComputeSomething("Pearl Jam", "Ten", o);
-        ComputeSomething("Diana Krall", "Live in Paris", o);
-        ComputeSomething("Dire Straits", "Sultans of Swing", o);
+        //ComputeSomething("Pink Floyd", "The Wall", o);
+        //ComputeSomething("Pink Floyd", "Division Bell", o);
+        //ComputeSomething("Pearl Jam", "Ten", o);
+        //ComputeSomething("Diana Krall", "Live in Paris", o);
+        //ComputeSomething("Dire Straits", "Sultans of Swing", o);
 
 
         ret = o.Query(MusicBrainz.MBQ_FindArtistByName, new String[] { "Coldplay" });
