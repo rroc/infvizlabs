@@ -65,7 +65,7 @@ Eritrea	1000
 Estonia	19600
 Ethiopia	1000
 European Union	29300
-Falkland Islands
+Falkland Islands (Islas Malvinas)	25000
 Faroe Islands	31000
 Fiji	6100
 Finland	32800
@@ -179,7 +179,7 @@ San Marino	34600
 Sao Tome and Principe	1200
 Saudi Arabia	13800
 Senegal	1800
-Serbia	4400 for Serbia
+Serbia	4400
 Seychelles	7800
 Sierra Leone	900
 Singapore	30900
