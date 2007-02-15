@@ -1,230 +1,228 @@
-Country	GDP - per capita (PPP)
-Bermuda	69900
-Luxembourg	68800
-Equatorial Guinea	50200
-United Arab Emirates	49700
-Norway	47800
-Guernsey	44600
-Cayman Islands	43800
-Ireland	43600
-United States	43500
-Jersey	40000
-British Virgin Islands	38500
-Iceland	38100
-Denmark	37000
-Hong Kong	36500
-Canada	35200
-San Marino	34600
-Austria	34100
-Switzerland	33600
-Japan	33100
-Australia	32900
-Finland	32800
-Belgium	31800
-Netherlands	31700
-Sweden	31600
-Germany	31400
-United Kingdom	31400
-Faroe Islands	31000
-Singapore	30900
-France	30100
-Italy	29700
-Qatar	29400
-European Union	29300
-Taiwan	29000
-Gibraltar	27900
-Isle of Man	27800
-Monaco	27000
-Spain	27000
-Israel	26200
-New Zealand	26000
-Bahrain	25300
-Falkland Islands (Islas Malvinas)	25000
-Liechtenstein	25000
-Macau	24300
-Korea South	24200
+Afghanistan	800
+Albania	5600
+Algeria	7700
+American Samoa	5800
 Andorra	24000
-Brunei	23600
-Greece	23500
-Slovenia	22900
-Cyprus	22700
+Angola	4300
+Anguilla	8800
+Antigua and Barbuda	10900
+Argentina	15000
+Armenia	5400
 Aruba	21800
-Czech Republic	21600
-Kuwait	21600
+Australia	32900
+Austria	34100
+Azerbaijan	7300
 Bahamas The	21300
-Malta	20300
-Greenland	20000
-Trinidad and Tobago	19700
+Bahrain	25300
+Bangladesh	2200
+Barbados	18200
+Belarus	7800
+Belgium	31800
+Belize	8400
+Benin	1100
+Bermuda	69900
+Bhutan	1400
+Bolivia	3000
+Bosnia and Herzegovina	5500
+Botswana	11400
+Brazil	8600
+British Virgin Islands	38500
+Brunei	23600
+Bulgaria	10400
+Burkina Faso	1300
+Burma	1800
+Burundi	700
+Cambodia	2600
+Cameroon	2400
+Canada	35200
+Cape Verde	6000
+Cayman Islands	43800
+Central African Republic	1100
+Chad	1500
+Chile	12600
+China	7600
+Colombia	8400
+Comoros	600
+Congo Democratic Republic of the	700
+Congo Republic of the	1300
+Cook Islands	9100
+Costa Rica	12000
+Cote d'Ivoire	1600
+Croatia	13200
+Cuba	3900
+Cyprus	22700
+Czech Republic	21600
+Denmark	37000
+Djibouti	1000
+Dominica	3800
+Dominican Republic	8000
+East Timor	800
+Ecuador	4500
+Egypt	4200
+El Salvador	4900
+Equatorial Guinea	50200
+Eritrea	1000
 Estonia	19600
+Ethiopia	1000
+European Union	29300
+Falkland Islands
+Faroe Islands	31000
+Fiji	6100
+Finland	32800
+France	30100
+French Polynesia	17500
+Gabon	7200
+Gambia The	2000
+Gaza Strip	1500
+Georgia	3800
+Germany	31400
+Ghana	2600
+Gibraltar	27900
+Greece	23500
+Greenland	20000
+Grenada	3900
+Guam	15000
+Guatemala	4900
+Guernsey	44600
+Guinea	2000
+Guinea-Bissau	900
+Guyana	4700
+Haiti	1800
+Honduras	3000
+Hong Kong	36500
+Hungary	17300
+Iceland	38100
+India	3700
+Indonesia	3800
+Iran	8900
+Iraq	1900
+Ireland	43600
+Isle of Man	27800
+Israel	26200
+Italy	29700
+Jamaica	4600
+Japan	33100
+Jersey	40000
+Jordan	4900
+Kazakhstan	9100
+Kenya	1200
+Kiribati	2700
+Korea North	1800
+Korea South	24200
+Kuwait	21600
+Kyrgyzstan	2000
+Laos	2100
+Latvia	15400
+Lebanon	5500
+Lesotho	2600
+Liberia	1000
+Libya	12700
+Liechtenstein	25000
+Lithuania	15100
+Luxembourg	68800
+Macau	24300
+Macedonia	8200
+Madagascar	900
+Malawi	600
+Malaysia	12700
+Maldives	3900
+Mali	1200
+Malta	20300
+Marshall Islands	2900
+Mauritania	2600
+Mauritius	13500
+Mayotte	2600
+Mexico	10600
+Micronesia Federated States of	2300
+Moldova	2000
+Monaco	27000
+Mongolia	2000
+Montenegro	3800
+Montserrat	3400
+Morocco	4400
+Mozambique	1500
+Namibia	7400
+Nauru	5000
+Nepal	1500
+Netherlands	31700
+Netherlands Antilles	16000
+New Caledonia	15000
+New Zealand	26000
+Nicaragua	3000
+Niger	1000
+Nigeria	1400
+Niue	5800
+Northern Mariana Islands	12500
+Norway	47800
+Oman	14100
+Pakistan	2600
+Palau	7600
+Panama	7900
+Papua New Guinea	2700
+Paraguay	4700
+Peru	6400
+Philippines	5000
+Poland	14100
 Portugal	19100
 Puerto Rico	19100
-Barbados	18200
-Slovakia	17700
-French Polynesia	17500
-Hungary	17300
-Netherlands Antilles	16000
-Latvia	15400
-Lithuania	15100
-Argentina	15000
-New Caledonia	15000
-Guam	15000
-Virgin Islands	14500
-Oman	14100
-Poland	14100
-Saudi Arabia	13800
-Mauritius	13500
-Croatia	13200
-South Africa	13000
-Libya	12700
-Malaysia	12700
-Chile	12600
-Northern Mariana Islands	12500
+Qatar	29400
+Romania	8800
 Russia	12100
-Costa Rica	12000
-Turks and Caicos Islands	11500
-Botswana	11400
-Antigua and Barbuda	10900
-Uruguay	10700
-Mexico	10600
-Bulgaria	10400
-World	10000
-Cook Islands	9100
-Kazakhstan	9100
+Rwanda	1600
+Saint Helena	2500
+Saint Kitts and Nevis	8200
+Saint Lucia	4800
+Saint Pierre and Miquelon	7000
+Saint Vincent and the Grenadines	3600
+Samoa	2100
+San Marino	34600
+Sao Tome and Principe	1200
+Saudi Arabia	13800
+Senegal	1800
+Serbia	4400 for Serbia
+Seychelles	7800
+Sierra Leone	900
+Singapore	30900
+Slovakia	17700
+Slovenia	22900
+Solomon Islands	600
+Somalia	600
+South Africa	13000
+Spain	27000
+Sri Lanka	4600
+Sudan	2300
+Suriname	7100
+Swaziland	5200
+Sweden	31600
+Switzerland	33600
+Syria	4000
+Taiwan	29000
+Tajikistan	1300
+Tanzania	800
 Thailand	9100
-Iran	8900
+Togo	1700
+Tokelau	1000
+Tonga	2200
+Trinidad and Tobago	19700
+Tunisia	8600
 Turkey	8900
 Turkmenistan	8900
-Anguilla	8800
-Romania	8800
-Brazil	8600
-Tunisia	8600
-Belize	8400
-Colombia	8400
-Macedonia	8200
-Saint Kitts and Nevis	8200
-Dominican Republic	8000
-Panama	7900
-Belarus	7800
-Seychelles	7800
-Algeria	7700
-China	7600
-Ukraine	7600
-Palau	7600
-Namibia	7400
-Azerbaijan	7300
-Gabon	7200
-Cyprus	7135
-Suriname	7100
-Saint Pierre and Miquelon	7000
-Venezuela	6900
-Peru	6400
-Fiji	6100
-Cape Verde	6000
-American Samoa	5800
-Niue	5800
-Albania	5600
-Bosnia and Herzegovina	5500
-Lebanon	5500
-Armenia	5400
-Swaziland	5200
-Nauru	5000
-Philippines	5000
-El Salvador	4900
-Jordan	4900
-Guatemala	4900
-Saint Lucia	4800
-Guyana	4700
-Paraguay	4700
-Sri Lanka	4600
-Jamaica	4600
-Ecuador	4500
-Morocco	4400
-Serbia	4400
-Angola	4300
-Egypt	4200
-Syria	4000
-Cuba	3900
-Maldives	3900
-Grenada	3900
-Dominica	3800
-Georgia	3800
-Wallis and Futuna	3800
-Montenegro	3800
-Indonesia	3800
-India	3700
-Saint Vincent and the Grenadines	3600
-Montserrat	3400
-Vietnam	3100
-Bolivia	3000
-Nicaragua	3000
-Honduras	3000
-Vanuatu	2900
-Marshall Islands	2900
-Kiribati	2700
-Papua New Guinea	2700
-Cambodia	2600
-Ghana	2600
-Lesotho	2600
-Pakistan	2600
-Mauritania	2600
-Mayotte	2600
-Saint Helena	2500
-Cameroon	2400
-Micronesia Federated States of	2300
-Sudan	2300
-Bangladesh	2200
-Tonga	2200
-Laos	2100
-Samoa	2100
-Gambia The	2000
-Kyrgyzstan	2000
-Guinea	2000
-Moldova	2000
-Mongolia	2000
-Zimbabwe	2000
-Uzbekistan	2000
-Iraq	1900
-Burma	1800
-Haiti	1800
-Korea North	1800
-Senegal	1800
-Uganda	1800
-Togo	1700
-Cote d'Ivoire	1600
+Turks and Caicos Islands	11500
 Tuvalu	1600
-Rwanda	1600
-Chad	1500
+Uganda	1800
+Ukraine	7600
+United Arab Emirates	49700
+United Kingdom	31400
+United States	43500
+Uruguay	10700
+Uzbekistan	2000
+Vanuatu	2900
+Venezuela	6900
+Vietnam	3100
+Virgin Islands	14500
+Wallis and Futuna	3800
 West Bank	1500
-Nepal	1500
-Mozambique	1500
-Gaza Strip	1500
-Bhutan	1400
-Nigeria	1400
-Congo Republic of the	1300
-Tajikistan	1300
-Burkina Faso	1300
-Kenya	1200
-Sao Tome and Principe	1200
-Mali	1200
-Benin	1100
-Central African Republic	1100
-Djibouti	1000
-Liberia	1000
-Zambia	1000
-Tokelau	1000
-Niger	1000
-Ethiopia	1000
-Eritrea	1000
-Madagascar	900
-Guinea-Bissau	900
-Sierra Leone	900
+World	10000
 Yemen	900
-Afghanistan	800
-Tanzania	800
-East Timor	800
-Burundi	700
-Congo Democratic Republic of the	700
-Solomon Islands	600
-Comoros	600
-Somalia	600
-Malawi	600
+Zambia	1000
+Zimbabwe	2000
