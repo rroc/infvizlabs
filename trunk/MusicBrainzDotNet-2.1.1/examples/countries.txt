@@ -65,7 +65,7 @@ Eritrea	1000
 Estonia	19600
 Ethiopia	1000
 European Union	29300
-Falkland Islands (Islas Malvinas)	25000
+Falkland Islands	25000
 Faroe Islands	31000
 Fiji	6100
 Finland	32800
