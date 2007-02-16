@@ -42,12 +42,16 @@ namespace MusicDataminer
             queryOnGoing = false;
         }
 
+
+        //------------------------------------------------------------
+        // BUTTONS:
+        //------------------------------------------------------------
         void startQueryButton_Click(object sender, System.EventArgs e)
         {
             //Begin queries according to the style
             if( this.startQueryButton.Text.Equals("Start Queries") )
             {
-                this.startQueryButton.Text = "Pause Query";
+                this.startQueryButton.Text = "Stop Query";
                 queryOnGoing = true;
                 PrintLine( "Restart Querying according to styles:\r\n-----------------------------------\r\n");
                 foreach (string style in this.styleCheckBoxList.CheckedItems)
@@ -66,8 +70,28 @@ namespace MusicDataminer
             this.startQueryButton.Invalidate();
         }
 
+        void clearLogButton_Click(object sender, EventArgs e)
+        {
+            if (queryOnGoing)
+            {
+                MessageBox.Show("Please stop the ongoing query first.");
+                //PrintLine("Please stop the ongoing query first.");
+            }
+            else
+            {
+                foreach (string style in this.styleCheckBoxList.CheckedItems)
+                {
+                    iParser.ClearLog(style);
+                }
+            }
+        }
 
 
+
+
+        //------------------------------------------------------------
+        // QUERYING:
+        //------------------------------------------------------------
         public int QueryByStyle(string aStyle)
         {
             MusicBrainz o;

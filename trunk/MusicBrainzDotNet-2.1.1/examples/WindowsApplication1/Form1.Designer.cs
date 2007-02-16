@@ -32,6 +32,7 @@ namespace MusicDataminer
         private void InitializeComponent()
         {
             this.splitLayout = new System.Windows.Forms.SplitContainer();
+            this.clearLogButton = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
             this.infoLabel = new System.Windows.Forms.Label();
             this.stylesLabel = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@ namespace MusicDataminer
             // 
             // splitLayout.Panel1
             // 
+            this.splitLayout.Panel1.Controls.Add(this.clearLogButton);
             this.splitLayout.Panel1.Controls.Add(this.titleLabel);
             this.splitLayout.Panel1.Controls.Add(this.infoLabel);
             this.splitLayout.Panel1.Controls.Add(this.stylesLabel);
@@ -64,6 +66,16 @@ namespace MusicDataminer
             this.splitLayout.Size = new System.Drawing.Size(1051, 454);
             this.splitLayout.SplitterDistance = 219;
             this.splitLayout.TabIndex = 0;
+            // 
+            // clearLogButton
+            // 
+            this.clearLogButton.Location = new System.Drawing.Point(46, 419);
+            this.clearLogButton.Name = "clearLogButton";
+            this.clearLogButton.Size = new System.Drawing.Size(120, 23);
+            this.clearLogButton.TabIndex = 5;
+            this.clearLogButton.Text = "Erase Selected";
+            this.clearLogButton.UseVisualStyleBackColor = true;
+            this.clearLogButton.Click += new System.EventHandler(this.clearLogButton_Click);
             // 
             // titleLabel
             // 
@@ -118,9 +130,10 @@ namespace MusicDataminer
             // 
             // startQueryButton
             // 
+            this.startQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startQueryButton.Location = new System.Drawing.Point(46, 382);
             this.startQueryButton.Name = "startQueryButton";
-            this.startQueryButton.Size = new System.Drawing.Size(111, 23);
+            this.startQueryButton.Size = new System.Drawing.Size(120, 23);
             this.startQueryButton.TabIndex = 0;
             this.startQueryButton.Text = "Start Queries";
             this.startQueryButton.UseVisualStyleBackColor = true;
@@ -157,7 +170,6 @@ namespace MusicDataminer
 
         }
 
-
         #endregion
 
         private System.Windows.Forms.SplitContainer splitLayout;
@@ -168,6 +180,7 @@ namespace MusicDataminer
         public System.Windows.Forms.TextBox outputBox;
         public System.Windows.Forms.Button startQueryButton;
         public System.Windows.Forms.CheckedListBox styleCheckBoxList;
+        private System.Windows.Forms.Button clearLogButton;
     }
 }
 
