@@ -13,6 +13,8 @@ namespace MusicDataminer
     class MusicDBParser
     {
         private Form1 iForm;
+        private string iDataAlbumFileName;
+        private string iDataCountriesFileName;
 
         public struct Country
         {
@@ -43,11 +45,15 @@ namespace MusicDataminer
         private Hashtable countries = new Hashtable();
 
         //Constructor
-        public MusicDBParser( Form1 aForm ) 
+        public MusicDBParser(Form1 aForm)
         {
             iForm = aForm;
+            iDataAlbumFileName = "../../../data_albums.bin";
+            iDataCountriesFileName = "../../../data_countries.bin";
             this.ParseCountries("../../../countries_acronyms.txt");
         }
+
+
 
         public bool GetMusicBrainzReleases(string artist, string albumName, MusicBrainz o,
             List<MusicBrainzAlbum> releasesList, out string retrievedName)
@@ -56,7 +62,7 @@ namespace MusicDataminer
             bool foundRelevantRelease = false;
 
 
-            
+
             //Console.WriteLine("Searching for occurrences for: " + artist + " / " + albumName);
             iForm.PrintLine("Searching for occurrences for: " + artist + " / " + albumName);
             bool ret = o.Query(MusicBrainz.MBQ_FileInfoLookup, new String[] { "", artist, albumName, "", "", "" });
@@ -150,30 +156,56 @@ namespace MusicDataminer
             row.Cells.Add("SE");
 
             book.Save(@"../../../test.xls");
-
-            //string fileName = "test.txt";  // a sample file name
-
-            //// Delete the file if it exists.
-            //if (File.Exists(fileName))
-            //{
-            //    File.Delete(fileName);
-            //}
-
-            //// Create the file.
-            //FileStream fs = File.Create(fileName, 1024);
-
-            //// Add some information to the file.
-            //byte[] info = new System.Text.UTF8Encoding(true).GetBytes("This is some text in the file.");
-            //fs.Write(info, 0, info.Length);
-
-            //// Open the file and read it back.
-            //StreamReader sr = File.OpenText(fileName);
-            //string s = "";
-            //while ((s = sr.ReadLine()) != null) 
-            //{
-            //    System.Console.WriteLine(s);
-            //}
         }
+
+        private void SaveData() 
+        {
+ 
+        }
+
+        private void SaveLog(int aLineNumber, string aStyle)
+        {
+
+            string fileName = "log" + aStyle + ".txt";
+
+            // Delete the file if it exists.
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+
+            // Create the file.
+            FileStream fs = File.Create(fileName, 1024);
+
+            // Add some information to the file.
+            byte[] info = new System.Text.UTF8Encoding(true).GetBytes( ""+ aLineNumber );
+            fs.Write(info, 0, info.Length);
+            fs.Close();
+        }
+
+        private int ReadLog(string aStyle)
+        {
+            string fileName = "log" + aStyle + ".txt";
+
+            // Open the file and read it back.
+            try
+            {
+                StreamReader sr = File.OpenText(fileName);
+                string s = "";
+                s = sr.ReadLine();
+                sr.Close();
+
+                iForm.PrintLine("Continuing from line number: " + s + ".");
+                return int.Parse(s);
+            }
+            catch
+            {
+                iForm.PrintLine("Starting New Query Event.");
+                return 0;
+            }
+        }
+
+
 
         public void ParseCountries(string filename)
         {
@@ -209,11 +241,11 @@ namespace MusicDataminer
             Console.WriteLine("DONE");
         }
 
-        public void AsyncParseByStyle(string style, MusicBrainz queryObject) 
+        public void AsyncParseByStyle(string style, MusicBrainz queryObject)
         {
-            iParseMusicStyleDelegate = new ParseMusicStyleDelegate( ParseMusicStyle );
-            AsyncCallback callback = new AsyncCallback( ParseMusicStyleCallback );
-            iParseMusicStyleDelegate.BeginInvoke( style, queryObject, callback, 123456789 );
+            iParseMusicStyleDelegate = new ParseMusicStyleDelegate(ParseMusicStyle);
+            AsyncCallback callback = new AsyncCallback(ParseMusicStyleCallback);
+            iParseMusicStyleDelegate.BeginInvoke(style, queryObject, callback, 123456789);
         }
 
         public void ParseMusicStyle(string style, MusicBrainz queryObject)
@@ -221,9 +253,16 @@ namespace MusicDataminer
             // Open the file and read it back.
             StreamReader sr = File.OpenText("../../../" + style + ".txt");
             string text = "";
-            
-            int lineNumber = 0;
-            while ((text = sr.ReadLine()) != null && iForm.queryOnGoing )
+
+            //Skip previously read
+            int lineNumber = ReadLog(style);
+            for (int i = 0; i < lineNumber; i++)
+            {
+                sr.ReadLine();
+            }
+
+            //Start querying
+            while ((text = sr.ReadLine()) != null && iForm.queryOnGoing)
             {
                 char[] delimiterChars = { '\t' };
 
@@ -273,10 +312,14 @@ namespace MusicDataminer
                 iForm.PrintLine("Stopped at line: " + lineNumber);
             }
             //end ok
-            else 
+            else
             {
                 iForm.PrintLine("Queried lines: " + lineNumber);
             }
+
+
+            //update log
+            SaveLog(lineNumber, style);
         }
 
     }
