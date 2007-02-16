@@ -36,7 +36,7 @@ namespace MusicDataminer
             this.styleCheckBoxList.SetItemChecked(8, true);
             //this.styleCheckBoxList.SetItemChecked(9, true);
             //this.styleCheckBoxList.SetItemChecked(10, true);
-            this.outputBox.Text = "Ready.";
+            this.outputBox.Text = "Ready.\r\n";
 
             iParser = new MusicDBParser( this );
             queryOnGoing = false;
@@ -59,12 +59,13 @@ namespace MusicDataminer
             //Pause Querying
             else
             {
-                PrintLine("");
+                PrintLine("Pausing please wait...");
                 queryOnGoing = false;
                 this.startQueryButton.Text = "Start Queries";
             }
             this.startQueryButton.Invalidate();
         }
+
 
 
         public int QueryByStyle(string aStyle)
