@@ -163,10 +163,27 @@ namespace MusicDataminer
  
         }
 
+        private string GetLogFilename( string aStyle )
+        {
+            return "../../../log_" + aStyle + ".txt";
+        }
+
+        public void ClearLog(string aStyle) 
+        {
+            string fileName = GetLogFilename(aStyle);
+
+            // Delete the file if it exists.
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+                iForm.PrintLine("Erased a log file: " + fileName);
+            }
+        }
+
         private void SaveLog(int aLineNumber, string aStyle)
         {
 
-            string fileName = "log" + aStyle + ".txt";
+            string fileName = GetLogFilename(aStyle);
 
             // Delete the file if it exists.
             if (File.Exists(fileName))
@@ -185,7 +202,7 @@ namespace MusicDataminer
 
         private int ReadLog(string aStyle)
         {
-            string fileName = "log" + aStyle + ".txt";
+            string fileName = GetLogFilename(aStyle);
 
             // Open the file and read it back.
             try
@@ -309,12 +326,12 @@ namespace MusicDataminer
             //query was interrupted
             if (!iForm.queryOnGoing)
             {
-                iForm.PrintLine("Stopped at line: " + lineNumber);
+                iForm.PrintLine("Stopped " + style + "-query ( line: " + lineNumber+" )");
             }
             //end ok
             else
             {
-                iForm.PrintLine("Queried lines: " + lineNumber);
+                iForm.PrintLine("Finished with "+ style +"-queries ( " + lineNumber+" lines )");
             }
 
 
