@@ -35,6 +35,39 @@ Burundi	700
 Cambodia	2600
 Cameroon	2400
 Canada	35200
+<<<<<<< .mine
+Cape Verde	6000
+Cayman Islands	43800
+Central African Republic	1100
+Chad	1500
+Chile	12600
+China	7600
+Colombia	8400
+Comoros	600
+Congo Democratic Republic of the	700
+Congo Republic of the	1300
+Cook Islands	9100
+Costa Rica	12000
+Cote d'Ivoire	1600
+Croatia	13200
+Cuba	3900
+Cyprus	22700
+Czech Republic	21600
+Denmark	37000
+Djibouti	1000
+Dominica	3800
+Dominican Republic	8000
+East Timor	800
+Ecuador	4500
+Egypt	4200
+El Salvador	4900
+Equatorial Guinea	50200
+Eritrea	1000
+Estonia	19600
+Ethiopia	1000
+European Union	29300
+Falkland Islands (Islas Malvinas)	25000
+=======
 Cape Verde	6000
 Cayman Islands	43800
 Central African Republic	1100
@@ -66,6 +99,7 @@ Estonia	19600
 Ethiopia	1000
 European Union	29300
 Falkland Islands	25000
+>>>>>>> .r20
 Faroe Islands	31000
 Fiji	6100
 Finland	32800
